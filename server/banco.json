@@ -1,0 +1,21 @@
+{
+    "db": [{
+        "id": 1,
+        "title": "everis",
+        "firstName": "Lula Molusca",
+        "notes": "Meu trabalho de hoje",
+        "email": "lulaMolusca@bob.com"
+
+    },
+    {
+        "id": 2,
+        "title": "everis",
+        "firstName": "Tio Molusca",
+        "notes": "Meu trabalho é fazer um Crud",
+        "email": "tioMolusca@bob.com"
+
+    }
+]
+}
+
+
