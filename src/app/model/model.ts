@@ -1,6 +1,7 @@
 export class model {
     id: number;
-    name:string;
-    email:string;
-    phone:number;
+    title: string;
+    firstName:string;
+    email:string;    
+    note: string;
 }
