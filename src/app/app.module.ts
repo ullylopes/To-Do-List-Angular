@@ -1,28 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
 import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from './material.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
+
+
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoCreateComponent } from './todo-create/todo-create.component';
+import { TodoAddComponent } from './todo-add/todo-add.component';
 
-
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
+    TodoCreateComponent,
+    TodoAddComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    HttpClientModule
+    BrowserAnimationsModule,   
+    HttpClientModule,
+    FormsModule
     
   ],
   providers: [],

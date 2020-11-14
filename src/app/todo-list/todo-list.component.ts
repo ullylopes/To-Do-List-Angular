@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Todo } from '../model/todo';
-import { TodoService } from '../../services/todo.service'
+import { model } from '../model/model';
+import { RestApiService } from '../service/rest-api.service'
 
-import {DataSource} from '@angular/cdk/table';
+
 
 
 
@@ -14,32 +14,29 @@ import {DataSource} from '@angular/cdk/table';
 })
 export class TodoListComponent implements OnInit {
   
-  constructor( private router: Router, private todoService: TodoService ) { }
+  constructor(  private restApi: RestApiService ) { }
 
- public todos: Todo[] = []
+ modelList: any = [];
   
-  displayedColumns = ['title', 'firstName', 'middleName' ];
+  
 
   ngOnInit(): void {
-      this.loadAllTodoList();    
+  this.loadModel()
   }
-  loadAllTodoList() {
-      this.todos = this.todoService.getAllTodos();
-      
-  }
+ 
+loadModel(){
+  return this.restApi.getModels().subscribe((data: {}) => {
+    this.modelList = data;
+  })
+}
 
-    onClickEditTodoDetail(id) {
-      console.log(id);
-      this.router.navigate(['/todo-detail['], {queryParams: {id: id}});
+deleteModel(id){
+  if(window.confirm('Você tem certeza que deseja Excluir?')){
+this.restApi.deleteModel(id).subscribe(data => {
+  this.loadModel()
+     })
   }
-  
-  onClickAddTodo() {
-      this.router.navigate(['/dashboard']);
-  }
-  
-  onClickTodoDelete(id) {
-      this.todoService.deleteTodoDetail(id);
-      this.loadAllTodoList(); 
-  }
+}
+
 
 }

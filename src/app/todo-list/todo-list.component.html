@@ -1,85 +1,41 @@
-<div>
-    <br>
+<div class="container custom-container-2">
+    
+    <div class="no-data text-center" *ngIf="modelList.length == 0">
+        <p>Adicione uma tarefa!</p>
 
-    <div class="container">
-        <div class="container">
-            <div fxLayout="column" fxLayoutGap = "20px" fxLayout.gt-md="row" fxLayoutAlign="space-around center" class="content">
+    </div>
+    
+    
+    <div *ngIf="modelList.length !== 0">
+        <h3 class="mb-3 text-center">Lista de Tarefas</h3>
+        <div class="col-md-12">
 
-                <div class="blocks">
-                    <button button="submit" mat-raised-button color="primary">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">User Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Nome</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let models of modelList">
+                        <td>{{modelList.id}}</td>
+                        <td>{{modelList.title}}</td>
+                        <td>{{modelList.firstName}}</td>
+                        <td>{{modelList.email}}</td>
+                        <td>{{modelList.note}}</td>
+                        
+                        <td>
 
-                        <mat-icon>add</mat-icon> Adicionar Tarefa
-                    </button>
-                </div>
+                            <span class="edit" routerLink="/create/{{models.id}}">Editar</span>
 
-            </div>
-        </div>
-        <br>
-
-        <div class="container">
-            <div fxLayout="row" fxLayoutAlign="center center" class="content">
-                <mat-card class="card">
-                    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-                        <h3>Tarefas</h3>
-
-                    </mat-card-title>
-
-                    <mat-card-content>
-                        <div class="example-container mat-elevation-z8">
-                            <mat-table #table [dataSource]="todos">
-
-                               <!--  <ng-container matColumnDef="date_posted">
-
-                                    <mat-header-cell *matHeaderCellDef>Date Posted</mat-header-cell>
-
-                                    <mat-cell *matCellDef="let element"> {{element.id | date: 'd/M/y'}}</mat-cell>
-
-                                </ng-container> -->
-
-
-                                <ng-container matColumnDef="id"> 
-                                    <mat-header-cell *matHeaderCellDef>id</mat-header-cell>
-
-                                    <mat-cell *matCellDef="let id">{{todos.id}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="title"> 
-                                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-
-                                    <mat-cell *matCellDef="let todos">{{todos.title}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="firstName">
-                                    <mat-header-cell *matHeaderCellDef>firstName</mat-header-cell>
-                                    <mat-cell *matCellDef="let todos"> {{todos.firstName}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="middleName">
-                                    <mat-header-cell *matHeaderCellDef>middleName</mat-header-cell>
-                                    <mat-cell *matCellDef="let todos"> {{todos.middleName}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="delete">
-                                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-
-                                    <mat-cell *matCellDef="let todos">
-                                        <a type="button" >
-                                            <mat-icon class="icon">delete</mat-icon>
-                                        </a>
-                                    </mat-cell>
-                                </ng-container>
-
-                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-                            </mat-table>
-                        </div>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+                            <span class="delete" (click)="deleteModel(models.id)">Delete</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-
