@@ -1,8 +1,8 @@
-<div class="container custom-container">
+<div class="container custom-container w-75 p-3">
     <div class="col-md-12">
-        <h3 class="mb-3 text-center">Qual é a proxima tarefa?</h3>
+        <h3 class="mb-3 text-center">Qual é a próxima tarefa?</h3>
         <div class="form-group">
-            <input type="text" [(ngModel)]="modelCreate.title" class="form-control" placeholder="Titulo">
+            <input type="text" [(ngModel)]="modelCreate.title" class="form-control" placeholder="Título">
         </div>
         <div class="form-group">
             <input type="text" [(ngModel)]="modelCreate.firstName" class="form-control" placeholder="Seu Nome">
@@ -13,13 +13,9 @@
         <div class="form-group">
             <input type="text" [(ngModel)]="modelCreate.note" class="form-control" placeholder="Notas">
         </div>
-       
-        <div class="form-group">
-            <button class="btn btn-success btn-lg btn-block col-md-4" (click)="addModel()">Criar Tarefa</button>
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-success btn-lg btn-block col-md-4" routerLink="/listas">Cancelar</button>
-        </div>
+    </div>
+    <div class="form-group d-flex justify-content-around">
+        <button class="btn btn-success col-md-3" (click)="addModel()">Criar Tarefa</button>
+        <button class="btn btn-success col-md-3" routerLink="/listas">Cancelar</button>
     </div>
 </div>

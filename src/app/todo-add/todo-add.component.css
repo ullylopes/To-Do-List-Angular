@@ -1,0 +1,16 @@
+.hover:hover {
+    background-color: white;
+    color: black;
+}
+
+.bc-color {
+    background: purple;
+}
+
+.container {
+    border: 1px solid rgb(190, 81, 190);
+    box-shadow: 5px 5px 5px rgb(231, 223, 223);
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 6%;
+}

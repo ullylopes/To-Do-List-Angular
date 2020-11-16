@@ -1,27 +1,27 @@
-
-<div class="container custom-container">
+<div class="container custom-container w75">
     <div class="col-md-12">
         <h3 class="mb-3 text-center">Atualizar Tarefa</h3>
         <div class="form-group"> <input type="text" [(ngModel)]="modelData.title" class="form-control"
-                placeholder="Titulo"> 
-            
-            </div>
+                placeholder="Titulo">
+
+        </div>
         <div class="form-group"> <input type="text" [(ngModel)]="modelData.firstName" class="form-control"
                 placeholder="Seu Nome">
-             </div>
+        </div>
         <div class="form-group">
 
             <div class="form-group"> <input type="text" [(ngModel)]="modelData.email" class="form-control"
-                placeholder="E-mail">
-             </div>
-        <div class="form-group">
-
-            <div class="form-group"> <input type="text" [(ngModel)]="modelData.note" class="form-control"
-                placeholder="Notas">
-             </div>
-             <div class="form-group">
-                <button class="btn btn-success btn-lg btn-block" (click)="updateModel()">Atualizar Tarefa</button>
+                    placeholder="E-mail">
             </div>
+            <div class="form-group">
 
+                <div class="form-group"> <input type="text" [(ngModel)]="modelData.note" class="form-control"
+                        placeholder="Notas">
+                </div>
 
-
+                <!-- AQUIIIIIIIIIII -->
+                <div class="form-group d-flex justify-content-around">
+                    <button class="btn btn-success col-md-3 hover bc-color" (click)="updateModel()">Atualizar
+                        Tarefa</button>
+                    <button class="btn btn-success col-md-3 hover bc-color" routerLink="/listas">Cancelar</button>
+                </div>

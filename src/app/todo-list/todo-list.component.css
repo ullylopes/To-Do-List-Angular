@@ -1,16 +1,16 @@
+.container {
+margin-top: 3%;
+}
+
 .card {
     min-width: 80%;
 }
 
 .example-container {
     display: flex;
-
     flex-direction: column;
-
     max-height: 500px;
-
     min-width: 100%;
-
 }
 
 .mat-table {
@@ -18,7 +18,19 @@
     max-height: 500px;
 }
 
-
-a {
+.cursor {
     cursor: pointer;
+}
+
+#show {
+    display: none;
+}
+
+#hover:hover #show {
+    display: block;
+}
+
+.font {
+    font-weight: bold;
+    font-size: small;
 }

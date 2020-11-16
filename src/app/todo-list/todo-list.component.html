@@ -1,13 +1,9 @@
 <div class="container custom-container-2">
-    
+
     <div class="no-data text-center" *ngIf="modelLista.length == 0">
         <p>Adicione uma tarefa!</p>
-
-        
-
     </div>
-    
-    
+
     <div *ngIf="modelLista.length !== 0">
         <h3 class="mb-3 text-center">Lista de Tarefas</h3>
         <div class="col-md-12">
@@ -21,7 +17,7 @@
                         <th scope="col">E-mail</th>
                         <th scope="col">Notas</th>
                         <th scope="col">Ação</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,22 +27,21 @@
                         <td>{{model.firstName}}</td>
                         <td>{{model.email}}</td>
                         <td>{{model.note}}</td>
-                        
-                       
-                        
 
-                     
                         <td>
+                            <div class="d-flex justify-content-between">
+                                <span class="edit cursor" id="hover" routerLink="/editar/{{model.id}}"> ✏️<span
+                                        id="show" class="font"> Editar </span>
+                                </span>
 
-                            <span class="edit" routerLink="/editar/{{model.id}}"> Editar </span>
-
-                            <span class="delete" (click)="deleteModel(model.id)"> Delete </span>
+                                <span class="delete cursor" id="hover" (click)="deleteModel(model.id)"> 🗑️ <span
+                                        id="show" class="font"> Excluir </span>
+                                </span>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>  
-
- 
+</div>
