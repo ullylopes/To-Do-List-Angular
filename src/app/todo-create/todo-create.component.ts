@@ -25,7 +25,7 @@ export class TodoCreateComponent implements OnInit {
   addModel() {
     this.restApi.createModel(this.modelCreate).subscribe((data:
       {}) => {
-      this.router.navigate(['/'])
+      this.router.navigate(['/listas'])
     })
   }
 }

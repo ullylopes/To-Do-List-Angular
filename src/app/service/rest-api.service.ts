@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { model } from '../model/model';
+import { Model } from '../model/model';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -12,7 +12,8 @@ import { retry, catchError } from 'rxjs/operators';
 
 export class RestApiService {
 
-    apiURL = 'http://localhost:3000';
+    apiURL = 'http://localhost:3000';       
+    
     constructor(private http: HttpClient) { }
 
 
@@ -22,24 +23,24 @@ export class RestApiService {
         })
     }
 
-    getModels(): Observable<model> {
-        return this.http.get<model>(this.apiURL + '/db')
+    getModels(): Observable<Model> {
+        return this.http.get<Model>(this.apiURL +'/db')
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             )
     }
 
-    getModel(id): Observable<model> {
-        return this.http.get<model>(this.apiURL + '/db/' + id)
+    getModel(id):Observable<Model>{
+        return this.http.get<Model>(this.apiURL + '/db/' + id)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             )
     }
 
-    createModel(model): Observable<model> {
-        return this.http.post<model>(this.apiURL + '/db',
+    createModel(model): Observable<Model> {
+        return this.http.post<Model>(this.apiURL + '/db',
             JSON.stringify(model), this.httpOptions)
             .pipe(
                 retry(1),
@@ -48,8 +49,8 @@ export class RestApiService {
 
     }
 
-    updateModel(id, model): Observable<model> {
-        return this.http.put<model>(this.apiURL + '/db/' + id,
+    updateModel(id, model): Observable<Model> {
+        return this.http.put<Model>(this.apiURL + '/db/' + id,
             JSON.stringify(model), this.httpOptions)
             .pipe(
                 retry(1),
@@ -59,7 +60,7 @@ export class RestApiService {
 
 
     deleteModel(id) {
-        return this.http.delete<model>(this.apiURL + '/db/' +
+        return this.http.delete<Model>(this.apiURL + '/db/' +
             id, this.httpOptions)
             .pipe(
                 retry(1),
@@ -74,8 +75,7 @@ export class RestApiService {
             errorMessage = error.error.message;
         } else {
 
-            errorMessage = `Error Code: ${error.status}\nMessage:
-${error.message}`;
+            errorMessage = `Error Code: ${error.status}\nMessage:${error.message}`;
         }
         window.alert(errorMessage);
         return throwError(errorMessage);

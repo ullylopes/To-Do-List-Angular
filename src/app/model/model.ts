@@ -1,7 +1,7 @@
-export class model {
+export class Model {
     id: number;
     title: string;
     firstName:string;
-    email:string;    
-    note: string;
+    note:string;    
+    email: string;
 }

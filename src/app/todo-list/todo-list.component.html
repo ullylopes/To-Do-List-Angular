@@ -1,41 +1,52 @@
 <div class="container custom-container-2">
     
-    <div class="no-data text-center" *ngIf="modelList.length == 0">
+    <div class="no-data text-center" *ngIf="modelLista.length == 0">
         <p>Adicione uma tarefa!</p>
+
+        
 
     </div>
     
     
-    <div *ngIf="modelList.length !== 0">
+    <div *ngIf="modelLista.length !== 0">
         <h3 class="mb-3 text-center">Lista de Tarefas</h3>
         <div class="col-md-12">
 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">User Id</th>
+                        <th scope="col">Tarefas</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Notas</th>
+                        <th scope="col">Ação</th>
                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let models of modelList">
-                        <td>{{modelList.id}}</td>
-                        <td>{{modelList.title}}</td>
-                        <td>{{modelList.firstName}}</td>
-                        <td>{{modelList.email}}</td>
-                        <td>{{modelList.note}}</td>
+                    <tr *ngFor="let model of modelLista[0].db">
+                        <td>{{model.id}}</td>
+                        <td>{{model.title}}</td>
+                        <td>{{model.firstName}}</td>
+                        <td>{{model.email}}</td>
+                        <td>{{model.note}}</td>
                         
+                       
+                        
+
+                     
                         <td>
 
-                            <span class="edit" routerLink="/create/{{models.id}}">Editar</span>
+                            <span class="edit" routerLink="/editar/{{model.id}}"> Editar </span>
 
-                            <span class="delete" (click)="deleteModel(models.id)">Delete</span>
+                            <span class="delete" (click)="deleteModel(model.id)"> Delete </span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
+</div>  
+
+ 

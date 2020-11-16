@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { model } from '../model/model';
+
 import { RestApiService } from '../service/rest-api.service'
 
 
@@ -13,27 +12,38 @@ import { RestApiService } from '../service/rest-api.service'
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  
-  constructor(  private restApi: RestApiService ) { }
 
- modelList: any = [];
-  
-  
+  modelLista:any = [];
+
+  constructor(public restApi: RestApiService ) { }
+
 
   ngOnInit(): void {
-  this.loadModel()
+    this.loadModel()
+    }
+   
+  loadModel(){
+     this.restApi.getModels().subscribe((data: {}) => {
+   
+      this.modelLista.push(data);
+   
+    });console.log(this.modelLista)
   }
- 
-loadModel(){
-  return this.restApi.getModels().subscribe((data: {}) => {
-    this.modelList = data;
-  })
-}
+  
+ // Get model listas
+ /* loadModel() {    
+    
+return this.restApi.getModels().subscribe((data: {}) => {this.modelLista = data;     })   } */
+
+
+  load() {       location.reload()}
 
 deleteModel(id){
   if(window.confirm('Você tem certeza que deseja Excluir?')){
 this.restApi.deleteModel(id).subscribe(data => {
   this.loadModel()
+  this.load()
+  
      })
   }
 }
