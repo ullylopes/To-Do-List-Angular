@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestApiService } from '../service/rest-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-add',
@@ -7,9 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoAddComponent implements OnInit {
 
-  constructor() { }
+  id = this.actRoute.snapshot.params['id'];
+  modelData: any = {};
 
-  ngOnInit(): void {
+
+  constructor(
+      public restApi: RestApiService,
+      public actRoute: ActivatedRoute,
+      public router: Router
+  ) { }
+
+  ngOnInit() {
+    this.restApi.getModel(this.id).subscribe((data: {}) => {
+    this.modelData = data;
+    })
   }
 
+  // Atualziar tarefa
+  updateModel() {
+    if(window.confirm('Tem certeza que deseja atualizar?'))
+    
+    {this.restApi.updateModel(this.id, this.modelData).subscribe(data => {this.router.navigate(['/listas'])})
+
+    }
+  }
+
+
 }
+
+
+
+
+
+
+
+    
+    
+    
