@@ -7,15 +7,30 @@
         <div class="form-group">
             <input type="text" [(ngModel)]="modelCreate.firstName" class="form-control" placeholder="Seu Nome">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <input type="text" [(ngModel)]="modelCreate.email" class="form-control" placeholder="E-mail">
+        </div> -->
+        <div class="form-group">
+            <input type="text" [(ngModel)]="modelCreate.email" class="form-control" #emailWithPattern="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="E-mail" required>
+
+            <div *ngIf="emailWithPattern.touched">
+                <p *ngIf="emailWithPattern.errors?.required">
+                    Email é um campo obrigatório!
+                </p>
+                <p *ngIf="emailWithPattern.errors?.pattern">
+                    Este não é um email válido
+                </p>
+            </div>
+
         </div>
         <div class="form-group">
             <input type="text" [(ngModel)]="modelCreate.note" class="form-control" placeholder="Notas">
         </div>
     </div>
     <div class="form-group d-flex justify-content-around">
-        <button class="btn btn-success col-md-3" (click)="addModel()">Criar Tarefa</button>
+        <button class="btn btn-success col-md-3" (click)="addModel()"
+            [disabled]="emailWithPattern.errors?.required || emailWithPattern.errors?.pattern">Criar Tarefa</button>
         <button class="btn btn-success col-md-3" routerLink="/listas">Cancelar</button>
     </div>
 </div>
